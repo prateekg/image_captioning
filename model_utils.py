@@ -22,5 +22,6 @@ def generate_caption(image: Image.Image):
     
     # Postprocess
     generated_ids = torch.tensor(outputs[0])
-    caption = tokenizer.decode(generated_ids[0], skip_special_tokens=True)
+    
+    caption = tokenizer.decode(generated_ids[0].tolist(), skip_special_tokens=True)
     return caption
