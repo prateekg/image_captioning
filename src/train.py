@@ -158,19 +158,19 @@ plt.show()
 # =============================
 # STEP 6: Save ONNX Encoder
 # =============================
-# model.eval()
-# encoder = model.get_encoder()
+model.eval()
+encoder = model.get_encoder()
 
-# dummy_image = torch.randn(1, 3, 224, 224).to(device)
-# torch.onnx.export(
-#     encoder,
-#     dummy_image,
-#     "image_captioning_vit_encoder.onnx",
-#     input_names=["pixel_values"],
-#     output_names=["encoder_hidden_states"],
-#     opset_version=14
-# )
-# print("ONNX model saved as image_captioning_vit_encoder.onnx")
+dummy_image = torch.randn(1, 3, 224, 224).to(device)
+torch.onnx.export(
+    encoder,
+    dummy_image,
+    "image_captioning_vit_encoder.onnx",
+    input_names=["pixel_values"],
+    output_names=["encoder_hidden_states"],
+    opset_version=14
+)
+print("ONNX model saved as image_captioning_vit_encoder.onnx")
 
 # =============================
 # STEP 7: Convert to TensorRT
